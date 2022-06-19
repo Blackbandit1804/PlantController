@@ -1,3 +1,3 @@
 export const enum PlantControllerItemEvents {
-    createPot = 'createPot',
+    CREATE_POT = 'createPot',
 }

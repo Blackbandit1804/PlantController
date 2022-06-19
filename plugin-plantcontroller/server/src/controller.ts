@@ -52,12 +52,24 @@ export class PlantController {
                 uid: player.data._id,
             });
 
-
             ServerTextLabelController.append({
                 pos: { x: fwdVector.x, y: fwdVector.y, z: fwdVector.z - 1 },
                 data: `${player.data.name}'s plant`,
                 uid: player.data._id,
-            })
+            });
+        }
+    }
+
+    public static async loadAllPlantPots() {
+        const allPlants = await this.getAllPlants();
+        for (const plant of allPlants) {
+            for (const pot of plant.data) {
+                ServerObjectController.append({
+                    model: pot.model,
+                    pos: pot.position,
+                    uid: plant._id,
+                });
+            }
         }
     }
 
